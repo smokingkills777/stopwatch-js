@@ -1,0 +1,56 @@
+body {
+    font-family: Verdana, sans-serif;
+    background-color: #6f8f72;
+}
+
+.stopwatch {
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+}
+
+.time-values {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 3px solid #8fd694;
+    border-radius: 10px;
+    color: #fff;
+}
+.time-values span {
+    font-size: 28px;
+    font-weight: 700;
+}
+.time-values span:not(:first-child):before {
+    content: ':';
+    margin: 0 5px;
+}
+
+button {
+    width: 100px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #8fd694;
+    transition: all .3s ease-in-out;
+}
+button:hover {
+    color: #8fd694;
+    background-color: #fff;
+}
+button:active, 
+button:focus {
+    color: #fff;
+    background-color: #8fd694;
+}
+.button-container{
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+}
