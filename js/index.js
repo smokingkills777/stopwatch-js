@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     hoursValue++;
                 }
             getResults(secondsValue, minutesValue, hoursValue);
-            }, 5);
+            }, 1000);
 
             buttonStartIsActive = true;
         } else {
@@ -53,17 +53,30 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
     
+    let clickCount = 0,
+        timeoutID = null;
+
     // Button WAIT action 
     document.querySelector('#wait').addEventListener('click', () => {
-        if (buttonStartIsActive && !buttonWaitIsActive) {
-            secondsCurrentValue = secondsValue;
-            minutesCurrentValue = minutesValue;
-            hoursCurrentValue = hoursValue;
-
-            buttonStartIsActive = false;
-            clearInterval(stopwatch);
-        }
-    });
+        clickCount++;
+        console.log(clickCount);
+        timeoutID = setTimeout(() => {
+            if (clickCount >= 2) {
+                if (buttonStartIsActive) {
+                    secondsCurrentValue = secondsValue;
+                    minutesCurrentValue = minutesValue;
+                    hoursCurrentValue = hoursValue;
+        
+                    buttonStartIsActive = false;
+                    clearInterval(stopwatch);
+                }
+                clickCount = 0;
+            } else {
+                clickCount = 0;
+            }
+            clearTimeout(timeoutID);
+        }, 300);
+});
 
     // Button RESET action 
     document.querySelector('#reset').addEventListener('click', () => {
